@@ -65,3 +65,5 @@ gem 'net-pop', require: false
 
 #add net-imap
 gem 'net-imap', require: false
+
+gem "devise", "~> 4.8"
