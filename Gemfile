@@ -67,3 +67,6 @@ gem 'net-pop', require: false
 gem 'net-imap', require: false
 
 gem "devise", "~> 4.8"
+
+# add bootstrap HTML, CSS, and JavaScript framework
+gem 'bootstrap', '~> 4.6'
