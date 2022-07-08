@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :set_form_vars, only: %i[new edit]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user, only: [:edit, :update, :destory]
 
   # GET /products or /products.json
   def index
@@ -64,6 +65,13 @@ class ProductsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
+    end
+
+    def authorize_user
+      if @product.user_id != current_user.id
+        flash[:alert] = "Something went wrong."
+        redirect_to products_path
+      end
     end
 
     def set_form_vars
